@@ -1,0 +1,176 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title%}
+About
+{%  endblock %}
+{% block content %}
+<html lang="en">
+<head>
+    <style>
+        body
+        {
+        font-family:Arial;
+        margin:0;
+        }
+        .firsthead
+        {
+        padding:20px;
+        font-size: 26px;
+        }
+        .emptydiv
+        {
+        padding:40px;
+        font-size: 22px;
+        }
+        .head
+        {
+        text-align: center;
+        color: green;
+        font-size: 48px;
+        }
+        .header
+        {
+        padding:60px;
+        text-align:center;
+        background:#1abc9c;
+        color:white;
+        }
+        .heading2
+        {
+        color:blue
+        }
+        .content1
+        {
+        width: 620px;
+        height: 450px;
+        padding: 20px;
+        }
+        .gallery
+        {
+        margin: 5px;
+        border: 2px solid #ggg;
+        float: left;
+        width: 50px;
+        }
+        .column {
+        float: left;
+        width: 33.33%;
+        padding: 5px;
+        }
+
+        /* Clear floats after image containers */
+        .row::after {
+          content: "";
+          clear: both;
+          display: table;
+        }
+        .faqs
+            {
+            padding:40px;
+            }
+    </style>
+</head>
+<body>
+<div class="firsthead"><h1 class="head">Community Fridges</h1></div>
+<div class="emptydiv">
+    <p>"What's special about Community Fridges is that they not only stop good food from going
+    into the trash, they also help build better community bonds by welcoming all people to come and share food.
+    Whether you are sharing your time, skills, a recipe idea or a photo of your meal on social media, our Community
+    Fridge project benefits everyone by reconnecting people through something we all have in common: eating. Food
+    waste is totally unnecessary and Community Fridges offer a solution-- to share unwanted food widely and freely."</p>
+    <p>A community fridge is a space that brings people together to share food, meet up,
+    learn new skills and prevent fresh food from going to waste. They’re open to all and anyone can share
+    or take food, including surplus from supermarkets, local food businesses, producers, households and gardens.
+    Fridges are run by community groups in shared spaces such as schools, community centres and shops.
+    Community fridges are a tried and tested way of reducing the environmental impact of food waste, which is a
+    huge issue. A third of all food produced globally is wasted. If food waste were a country, it would be the
+    third-biggest emitter of greenhouse gases globally. </p>
+All community fridge donations should be:<br>
+
+    <ul>
+          <li>Sealed</li>
+          <li>Labeled</li>
+          <li>Dated</li>
+    </ul>
+</div>
+<div class="header">
+    <h1>HOW TO USE THE FRIDGE</h1>
+</div>
+<div class="row">
+    <div class="content1">
+            <p>
+            <h3 class="heading2">GIVING FOOD</h3><br>
+        Ask yourself:
+        <ul>
+          <li>Is it at risk of being wasted?</li>
+          <li>Is it fresh and within its use-by date?</li>
+          <li>Is it good to eat for at least 24 more hours?</li>
+          <li>Can we accept it? Check exclusion list below.</li>
+          <li>Is the packaging unbroken?</li>
+          <li>Does the packaging have a list of ingredients and allergens?</li>
+          <li>Ask a member of the team to accept and weigh in your unwanted food</li>
+
+        </ul>
+        <br>
+        If you a
+        re a food business please contact Sian our Food Connect Co-ordinator, - rekhamr468@gmail.com or
+        call 07385 198 797 to discuss how we can help you reduce your food waste.<br>
+                If You Wish to donate..Please Register<a href="{% url 'memberregistration' %}">To Become a member</a>
+
+            </p>
+    </div>
+    <div class="content1">
+            <p>
+            <h3 class="heading2">RECEIVING FOOD</h3><br>
+        Before you leave:
+        <ul>
+          <li>Read the disclaimer displayed.</li>
+          <li>Select the food you would like
+* please be considerate and only take what you need. The project is open regularly and you are welcome to return another day. There is a maximum limit of 10 items per person and no more than 3 of the same item.</li>
+          <li>Bring and reuse your bag</li>
+          <li>Check the food is still fresh and within its use-by date Enjoy! </li>
+        </ul>
+            </p>
+    </div>
+</div>
+<div class="row">
+  <div class="column">
+    <img src="{% static '/images/about3.jpg' %}"  style="width:100%">
+  </div>
+  <div class="column">
+    <img src="{% static '/images/about2.jpg' %}"  style="width:100%">
+  </div>
+  <div class="column">
+    <img src="{% static '/images/about3.jpg' %}"  style="width:100%">
+  </div>
+    <div class="faqs">FAQS: Community Fridges<br><br>
+
+    <ul>
+        <li>Can I donate food I cooked at home or from a potluck I hosted?<br><br>
+    ......Yes! So long as it’s sealed, labeled, and dated, we would love to
+    share your extra food.<br> Potlucks, barbecues, family gatherings or
+    reunions, picnics, holiday meals, birthday parties,<br> local events.
+    Please include ingredients....
+        </li>
+        <br>
+        <li>We have extra food from a catered event. Can I drop that off?<br><br>
+            ......Yes, just make sure its sealed, labeled, and dated. If possible, please divide
+            it into<br> individual or family servings as a large tray can be hard to
+            disperse within a community....<br>
+        </li>
+        <br>
+        <li>
+            Who can take food or items?<br><br>
+            Anyone! Even you. That’s the beauty of the community fridge program — it eliminates <br>the stigma of asking
+            for food because we welcome anyone in the community to take from it.<br>
+
+            We do not ask for state IDs, nor do we ask individuals to sign up or prove their income<br> eligibility. We simply
+            want to share extra food with our community, in the same way a <br>coworker may bring extra food to an
+            office breakroom to share.<br>
+        </li>
+    </ul>
+    </div>
+</div>
+</body>
+</html>
+{% endblock %}

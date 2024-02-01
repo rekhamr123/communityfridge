@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title%}
+Admin
+{%  endblock %}
+
+{% block content %}
+    {% if user.is_authenticated %}
+<br>
+    <h3 style="color:blue; text-align:right;">Hi,{{user.username}}</h3>
+    {% endif %}
+<br>
+<br>
+<ul style="font-size:20px; text-align:center;">
+    <h4><a href="{% url 'donated_items' %}">View Donated Items</a></h4>
+        <h4><a href="{% url 'requested_items' %}">View Requested Items</a></h4>
+
+</ul>
+{% endblock %}

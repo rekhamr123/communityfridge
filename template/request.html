@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Request page</title>
+</head>
+<body>{% extends 'base.html' %}
+{% load static %}
+{% block title%}
+Request
+{%  endblock %}
+{% block content %}
+
+<head>
+<style>
+*{
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins',sans-serif;
+}
+body{
+  background-color: #ffff;
+}
+.emptydiv
+{
+padding:40px;
+}
+.container{
+  width: 60%;
+  background-color: #fff;
+  padding: 50px 50px;
+  border-radius: 5px;
+  box-shadow: 0 5px 10px #888888;
+}
+.container .title{
+  color: green;
+  text-align:center;
+  font-size: 25px;
+  font-weight: 700;
+  position: relative;
+}
+.content form .user-details{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 10px 0 12px 0;
+}
+form .user-details .input-box{
+  margin-bottom: 15px;
+  width: calc(100% / 2 - 20px);
+}
+.user-details .input-box input{
+  height: 45px;
+  width: 100%;
+  outline: none;
+  font-size: 16px;
+  border-radius: 5px;
+  padding-left: 15px;
+  border: 1px solid #ccc;
+  border-bottom-width: 2px;
+  transition: all 0.3s ease;
+}
+.user-details .input-box textarea{
+  height: 45px;
+  width: 100%;
+  outline: none;
+  font-size: 16px;
+  border-radius: 5px;
+  padding-left: 15px;
+  border: 1px solid #ccc;
+  border-bottom-width: 2px;
+  transition: all 0.3s ease;
+}
+.user-details .input-box input:valid{
+  border-color: yellow ;
+}
+.user-details .input-box textarea:valid{
+  border-color: yellow ;
+ }
+
+form .category{
+   display: flex;
+   width: 80%;
+   margin: 14px 0 ;
+   justify-content: space-between;
+ }
+ form .category label{
+   display: flex;
+   align-items: center;
+   cursor: pointer;
+ }
+ form .category label .dot{
+  height: 18px;
+  width: 18px;
+  border-radius: 50%;
+  margin-right: 10px;
+  background: #d9d9d9;
+  border: 5px solid transparent;
+  transition: all 0.3s ease;
+}
+form .button{
+   height: 35px;
+   margin: 35px 0
+ }
+ form .button input{
+   height: 100%;
+   width: 50%;
+   float: center;
+   text-align: center;
+   border-radius: 5px;
+   border: none;
+   color: green;
+   font-size: 18px;
+   font-weight: 500;
+   letter-spacing: 1px;
+   cursor: pointer;
+   transition: all 0.3s ease;
+  background-image: linear-gradient(pink 10%, yellow 85%, pink 90%);
+ }
+ /* The container */
+.check {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 1px;
+  cursor: pointer;
+  font-size: 15px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.check input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+}
+
+/* On mouse-over, add a grey background color */
+.check:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a blue background */
+.check input:checked ~ .checkmark {
+  background-color: #2196F3;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.check input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.check .checkmark:after {
+  left: 9px;
+  top: 5px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+}
+
+</style>
+</head>
+<div class="emptydiv"></div>
+
+ <div class="container">
+ <div class="title">Request Form
+    </div>
+{% for i in item %}
+ <div class="content">
+    <form action="{% url 'requests' %}" method="POST" id="form">
+      {% csrf_token %}
+      <div class="user-details">
+        <div class="input-box">
+          <label>Name : </label>
+            <input type="text" name="username" >
+        </div>
+        <div class="input-box">
+          <label>Email : </label>
+            <input type="text" name="email" >
+        </div>
+        <div class="input-box">
+          <label>Phone :</label>
+            <input type="phone" name="phone" >
+        </div>
+        <div class="input-box">
+          <label>Address : </label><br>
+             <textarea rows="4" cols="50" placeholder="Fill your address here..." name="address"></textarea>
+
+        </div>
+      </div>
+          <label style="color:green;">Please select Items to Request : </label><br><br>
+        <table width="100%">
+            <tr>
+                <td>
+                  <label class=check for="Milk">{{i.item1}}
+                  <input type="checkbox" id="Milk" name="items" value="{{i.item1}}"  checked="checked">
+                  <span class="checkmark"></span>
+                  </label><br>
+                  <label class=check for="Fruits">{{i.item2}}
+                  <input type="checkbox" id="Fruits" name="items" value="{{i.item2}}">
+                  <span class="checkmark"></span>
+                  </label><br>
+                  <label class=check for="Noodils">{{i.item3}}
+                  <input type="checkbox" id="Noodils" name="items" value="{{i.item3}}">
+                  <span class="checkmark"></span>
+                  </label><br>
+                  <label class=check for="Eggs">{{i.item4}}
+                  <input type="checkbox" id="Eggs" name="items" value="{{i.item4}}">
+                  <span class="checkmark"></span>
+                  </label><br>
+                  <label class=check for="Snacks">{{i.item5}}
+                  <input type="checkbox" id="snacks" name="items" value="{{i.item5}}">
+                  <span class="checkmark"></span>
+                  </label><br>
+                </td>
+                <td>
+                  <label class=check for="meals">{{i.item6}}
+                  <input type="checkbox" id="meals" name="items" value="{{i.item6}}">
+                  <span class="checkmark"></span>
+                  </label><br>
+                  <label class=check for="water">{{i.item7}}
+                  <input type="checkbox" id="water" name="items" value="{{i.item7}}">
+                  <span class="checkmark"></span>
+                  </label><br>
+                  <label class=check for="Juice">{{i.item8}}
+                  <input type="checkbox" id="Juice" name="items" value="{{i.item8}}">
+                  <span class="checkmark"></span>
+                  </label><br>
+                  <label class=check for="Bread">{{i.item9}}
+                  <input type="checkbox" id="Bread" name="items" value="{{i.item9}}">
+                  <span class="checkmark"></span>
+                  </label>
+                </td>
+            </tr>
+        </table>
+
+    <div class="button" style="style="align="center">
+      <input type="submit" name="submit" value="Request" >
+    </div>
+ </form>
+ </div>
+     {% for message in messages %}
+ <script>
+    alert('{{message}}');
+ </script>
+ {% endfor %}
+{% endfor %}
+ </div>
+{% endblock %}
+
+</body>
+</html>
